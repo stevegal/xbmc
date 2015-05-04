@@ -8734,17 +8734,20 @@ msgstr ""
 
 #: system/settings/settings.xml
 msgctxt "#19185"
-msgid "Clear data"
+msgid "Reset PVR database"
 msgstr ""
 
 msgctxt "#19186"
-msgid "All your TV related data (channels, groups, guide) will be cleared. Are you sure?"
+msgid "All data in the PVR database is being erased. Are you sure?"
 msgstr ""
 
-#empty string with id 19187
+#: system/settings/settings.xml
+msgctxt "#19187"
+msgid "Reset guide database"
+msgstr ""
 
 msgctxt "#19188"
-msgid "All your guide data will be cleared. Are you sure?"
+msgid "Guide is being reset. Are you sure?"
 msgstr ""
 
 #: system/settings/settings.xml
