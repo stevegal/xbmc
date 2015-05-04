@@ -592,8 +592,6 @@ msgctxt "#143"
 msgid "Current:"
 msgstr ""
 
-#. Used in Confluence system info to show build info
-#: addons/skin.confluence/720p/SettingsSystemInfo.xml
 msgctxt "#144"
 msgid "Build:"
 msgstr ""
@@ -648,7 +646,6 @@ msgctxt "#156"
 msgid "Free"
 msgstr ""
 
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
 msgctxt "#157"
 msgid "Video"
 msgstr ""
@@ -728,11 +725,7 @@ msgctxt "#173"
 msgid "Display 4:3 videos as"
 msgstr ""
 
-#. Used in Confluence system info to show build date
-#: addons/skin.confluence/720p/SettingsSystemInfo.xml
-msgctxt "#174"
-msgid "Compiled:"
-msgstr ""
+#empty string with id 174
 
 #: xbmc/playlists/SmartPlaylist.cpp
 msgctxt "#175"
@@ -1082,7 +1075,6 @@ msgstr ""
 
 #: xbmc/dialogs/GUIDialogMediaSource.cpp
 #: xbmc/media/MediaTypes.cpp
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
 msgctxt "#249"
 msgid "Music"
 msgstr ""
@@ -1909,7 +1901,7 @@ msgid "Remove movie from library"
 msgstr ""
 
 msgctxt "#433"
-msgid "Would you really like to remove '%s' from library?"
+msgid "Would you really like to remove[CR]'%s' from library?"
 msgstr ""
 
 #. From <wind dir.> at <speed> <unit>
@@ -2550,12 +2542,10 @@ msgctxt "#583"
 msgid "Remember views for different folders"
 msgstr ""
 
-#: xbmc/view/GUIViewState.cpp
 msgctxt "#584"
 msgid "Ascending"
 msgstr ""
 
-#: xbmc/view/GUIViewState.cpp
 msgctxt "#585"
 msgid "Descending"
 msgstr ""
@@ -2667,7 +2657,6 @@ msgctxt "#612"
 msgid "Bits/sample"
 msgstr ""
 
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
 msgctxt "#613"
 msgid "Sample rate"
 msgstr ""
@@ -2788,11 +2777,6 @@ msgstr ""
 #: system/settings/settings.xml
 msgctxt "#643"
 msgid "Avoid clipping on ReplayGained files"
-msgstr ""
-
-#: system/settings/settings.xml
-msgctxt "#644"
-msgid "Stretch 16:9 - Nonlinear"
 msgstr ""
 
 #empty string with id 644
@@ -3430,11 +3414,7 @@ msgctxt "#810"
 msgid "Any time"
 msgstr ""
 
-# Label of "Recording group" list in the PVR timer setting dialog
-#: xbmc/pvr/dialogs/GUIDialogPVRTimerSettings.cpp
-msgctxt "#811"
-msgid "Recording group"
-msgstr ""
+# empty string with id 811
 
 #. Label for setting TV->Recordings->Prevent duplicate episodes
 #: system/settings/settings.xml
@@ -3651,7 +3631,7 @@ msgctxt "#1002"
 msgid "The connection to the network location couldn't be established. This could be due to the network not being connected. Would you like to add it anyway?"
 msgstr ""
 
-#empty strings from id 1003 to 1005
+#empty string from id 1003 to 1005
 
 msgctxt "#1006"
 msgid "IP address"
@@ -4507,7 +4487,7 @@ msgstr ""
 #empty strings from id 2082 to 2100
 
 msgctxt "#2101"
-msgid "Newer version needed. Check the log for more information about this message."
+msgid "Newer version needed.[CR]Check the log for more information about this message."
 msgstr ""
 
 #. Notification message indicating an add-on error. "<Add-on name> error".
@@ -5243,7 +5223,6 @@ msgstr ""
 
 #empty strings from id 12374 to 12375
 
-#: xbmc\settings\dialogs\GUIDialogAudioDSPSettings.cpp
 #: xbmc\video\dialogs\GUIDialogAudioSubtitleSettings.cpp
 #: xbmc\video\dialogs\GUIDialogVideoSettings.cpp
 msgctxt "#12376"
@@ -6983,8 +6962,6 @@ msgctxt "#14060"
 msgid "Unknown type cache - Internet"
 msgstr ""
 
-#. Name of a class/preset for audio DSP
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
 msgctxt "#14061"
 msgid "Auto"
 msgstr ""
@@ -7021,7 +6998,6 @@ msgctxt "#14069"
 msgid "Apply these settings now?"
 msgstr ""
 
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
 msgctxt "#14070"
 msgid "Apply changes now"
 msgstr ""
@@ -7217,33 +7193,7 @@ msgctxt "#14110"
 msgid "Long date format"
 msgstr ""
 
-#empty strings from id 14111 to 15003
-
-#. Name of a class/preset for audio DSP
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15004"
-msgid "Basic"
-msgstr ""
-
-#. Name of a class/preset for audio DSP
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15005"
-msgid "Application"
-msgstr ""
-
-#. Name of a class/preset for audio DSP
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15006"
-msgid "Phone"
-msgstr ""
-
-#. Name of a class/preset for audio DSP
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15007"
-msgid "Message"
-msgstr ""
-
-#empty strings from id 15008 to 15010
+#empty strings from id 14111 to 15010
 
 #: xbmc/music/MusicDatabase.cpp
 #: xbmc/video/VideoDatabase.cpp
@@ -7272,7 +7222,6 @@ msgctxt "#15015"
 msgid "Remove"
 msgstr ""
 
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
 msgctxt "#15016"
 msgid "Games"
 msgstr ""
@@ -7283,306 +7232,13 @@ msgctxt "#15019"
 msgid "Add"
 msgstr ""
 
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15020"
-msgid "Audio DSP manager"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15021"
-msgid "Content type"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15022"
-msgid "Listening mode"
-msgstr ""
-
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSPMode.cpp
-msgctxt "#15023"
-msgid "Master mode"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15024"
-msgid "Pre-process setup..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15025"
-msgid "Listening mode setup..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15026"
-msgid "Speaker / Output setup..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15027"
-msgid "Audio information..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15028"
-msgid "Audio DSP settings - Main"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15029"
-msgid "Audio DSP settings - Listening mode"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15030"
-msgid "Audio DSP settings - Speaker / Output"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15031"
-msgid "Audio DSP settings - Audio information"
-msgstr ""
-
-#empty string from id 15032
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15033"
-msgid "Resampler setup..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15034"
-msgid "Miscellaneous..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15035"
-msgid "Audio DSP settings - Resampler"
-msgstr ""
-
-#empty string from id 15036
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15037"
-msgid "Audio DSP settings - Pre-process"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15038"
-msgid "Audio DSP settings - Miscellaneous"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15039"
-msgid "Pre-processing setup..."
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15040"
-msgid "Settings dialogue can be only used on OSD menu during playback!"
-msgstr ""
-
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15041"
-msgid "Unknown mode name"
-msgstr ""
-
-#: addons/skin.confluence/720p/DialogAudioDSPSettings.xml
-msgctxt "#15042"
-msgid "Content:"
-msgstr ""
-
-#empty strings from id 15043 to 15046
-
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/music/windows/GUIWindowMusicBase.cpp
-msgctxt "#15047"
-msgid "Audio DSP settings"
-msgstr ""
-
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSP.cpp
-msgctxt "#15048"
-msgid "No audio DSP add-on enabled"
-msgstr ""
-
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSP.cpp
-msgctxt "#15049"
-msgid "The audio DSP manager has been enabled without any enabled DSP add-on. Enable at least one add-on in order to use the audio DSP functionality."
-msgstr ""
-
-#. Name of a list with amount of entries behind on GUI
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15050"
-msgid "Available modes"
-msgstr ""
-
-#. Name of a list with amount of entries behind on GUI
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15051"
-msgid "Active modes"
-msgstr ""
+#empty strings from id 15020 to 15051
 
 msgctxt "#15052"
 msgid "Password"
 msgstr ""
 
-#empty strings from id 15053 to 15056
-
-#. Chain select button name
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15057"
-msgid "Input resampling"
-msgstr ""
-
-#. Chain select button name
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15058"
-msgid "Pre-processing"
-msgstr ""
-
-#. Chain select button name
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15059"
-msgid "Master processing"
-msgstr ""
-
-#. Chain select button name
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15060"
-msgid "Post-processing"
-msgstr ""
-
-#. Chain select button name
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15061"
-msgid "Output resampling"
-msgstr ""
-
-#. Header on detailed add-on dsp mode description
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15062"
-msgid "Detailed description"
-msgstr ""
-
-#. Fallback string if nothing from addon is present
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15063"
-msgid "No description available"
-msgstr ""
-
-#. DSP manager boolean enable/disable value text
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15064"
-msgid "Apply changes directly"
-msgstr ""
-
-#empty string id 15065
-
-#. Button to disable all enabled modes on current selected type
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15066"
-msgid "Clear active modes"
-msgstr ""
-
-#. Close the DSP manager window
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15067"
-msgid "Close"
-msgstr ""
-
-#empty strings from id 15068 to 15077
-
-#. DSP manager dialog context menu entry
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15078"
-msgid "Mode settings"
-msgstr ""
-
-#. DSP manager yes/no dialog text
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15079"
-msgid "You have changed some audio DSP settings.\nWould you like to keep the new settings?"
-msgstr ""
-
-#. DSP manager dialog context menu entry
-#: xbmc/settings/dialogs/GUIDialogAudioDSPManager.cpp
-msgctxt "#15080"
-msgid "Change resampler"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15081"
-msgid "Process chain (with CPU usage)"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15082"
-msgid "Resampling to %i Hz"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15083"
-msgid "Final resampling to %i Hz"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15084"
-msgid "Master process"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15085"
-msgid "Pre-process"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15086"
-msgid "Post-process"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15087"
-msgid "Input"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15088"
-msgid "Output"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15089"
-msgid "Input signal"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15090"
-msgid "Output signal"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15091"
-msgid "Positions"
-msgstr ""
-
-#. Audio DSP process chain indication
-#: xbmc/settings/dialogs/GUIDialogAudioDSPSettings.cpp
-msgctxt "#15092"
-msgid "CPU usage for DSP"
-msgstr ""
-
-#empty strings from id 15093 to 15099
+#empty strings from id 15053 to 15099
 
 msgctxt "#15100"
 msgid "Library"
@@ -7650,32 +7306,7 @@ msgctxt "#15112"
 msgid "Default theme"
 msgstr ""
 
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15113"
-msgid "Here you can configure pre-processing modes. This processing stage only change the input data stream."
-msgstr ""
-
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15114"
-msgid "Here you can configure a input resampling process. Notice: Only one active mode is allowed!"
-msgstr ""
-
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15115"
-msgid "Here you can configure master processing modes. Notice: On playback only one active mode can be selected!"
-msgstr ""
-
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15116"
-msgid "Here you can configure a output resampling process. Notice: Only one active mode is allowed!"
-msgstr ""
-
-#: addons/skin.confluence/720p/DialogAudioDSPManager.xml
-msgctxt "#15117"
-msgid "Here you can configure post-processing modes. This processing stage can be used for equalizing and volume correction..."
-msgstr ""
-
-#empty strings from id 15118 to 15199
+#empty strings from id 15113 to 15199
 
 msgctxt "#15200"
 msgid "Last.fm"
@@ -7985,7 +7616,7 @@ msgstr ""
 
 #: xbmc/windows/GUIWindowFileManager.cpp
 msgctxt "#16202"
-msgid "Failed to copy at least one file. Check the log for more information about this message."
+msgid "Failed to copy at least one file.[CR]Check the log for more information about this message."
 msgstr ""
 
 #: xbmc/windows/GUIWindowFileManager.cpp
@@ -7995,7 +7626,7 @@ msgstr ""
 
 #: xbmc/windows/GUIWindowFileManager.cpp
 msgctxt "#16204"
-msgid "Failed to move at least one file. Check the log for more information about this message."
+msgid "Failed to move at least one file.[CR]Check the log for more information about this message."
 msgstr ""
 
 #: xbmc/windows/GUIWindowFileManager.cpp
@@ -8005,7 +7636,7 @@ msgstr ""
 
 #: xbmc/windows/GUIWindowFileManager.cpp
 msgctxt "#16206"
-msgid "Failed to delete at least one file. Check the log for more information about this message."
+msgid "Failed to delete at least one file.[CR]Check the log for more information about this message."
 msgstr ""
 
 #empty strings from id 16207 to 16299
@@ -8417,13 +8048,13 @@ msgid "Already started recording on this channel"
 msgstr ""
 
 msgctxt "#19035"
-msgid "%s couldn't be played. Check the log for more information about this message."
+msgid "%s couldn't be played.[CR]Check the log for more information about this message."
 msgstr ""
 
 #: xbmc/pvr/windows/GUIWindowPVRBase.cpp
 #: xbmc/video/windows/GUIWindowVideoBase.cpp
 msgctxt "#19036"
-msgid "This recording can't be played. Check the log for more information about this message."
+msgid "This recording can't be played.[CR]Check the log for more information about this message."
 msgstr ""
 
 #: system/settings/settings.xml
@@ -8459,11 +8090,11 @@ msgid "Recording"
 msgstr ""
 
 msgctxt "#19044"
-msgid "Please check your configuration. Check the log for more information about this message."
+msgid "Please check your configuration.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19045"
-msgid "No PVR clients have been started yet. Wait for the PVR clients to start up. Check the log for more information about this message."
+msgid "No PVR clients have been started yet.[CR]Wait for the PVR clients to start up.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19046"
@@ -8563,7 +8194,7 @@ msgstr ""
 
 #: xbmc/pvr/recording/PVRRecording.cpp
 msgctxt "#19068"
-msgid "This recording couldn't be deleted. Check the log for more information about this message."
+msgid "This recording couldn't be deleted.[CR]Check the log for more information about this message."
 msgstr ""
 
 #. Electronic program guide. used by ?
@@ -8755,19 +8386,19 @@ msgstr ""
 #: xbmc/pvr/timers/PVRTimerInfoTag.cpp
 #: xbmc/pvr/timers/PVRTimers.cpp
 msgctxt "#19109"
-msgid "Couldn't save timer. Check the log for more information about this message."
+msgid "Couldn't save timer.[CR]Check the log for more information about this message."
 msgstr ""
 
 #: xbmc/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19110"
-msgid "An unexpected error occurred. Try again later or check the log for more information."
+msgid "An unexpected error occurred.[CR]Try again later or check the log for more information."
 msgstr ""
 
 #: xbmc/pvr/addons/PVRClients.cpp
 #: xbmc/pvr/recording/PVRRecording.cpp
 #: xbmc/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19111"
-msgid "PVR backend error. Check the log for more information about this message."
+msgid "PVR backend error.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19112"
@@ -8925,7 +8556,7 @@ msgstr ""
 
 #: xbmc/pvr/recording/PVRRecording.cpp
 msgctxt "#19147"
-msgid "The PVR backend does not support this action. Check the log for more information about this message."
+msgid "The PVR backend does not support this action.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19148"
@@ -8997,7 +8628,7 @@ msgstr ""
 
 #: xbmc/pvr/PVRManager.cpp
 msgctxt "#19164"
-msgid "Can't start recording. Check the log for more information about this message."
+msgid "Can't start recording.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19165"
@@ -9103,17 +8734,20 @@ msgstr ""
 
 #: system/settings/settings.xml
 msgctxt "#19185"
-msgid "Clear data"
+msgid "Reset PVR database"
 msgstr ""
 
 msgctxt "#19186"
-msgid "All your TV related data (channels, groups, guide) will be cleared. Are you sure?"
+msgid "All data in the PVR database is being erased. Are you sure?"
 msgstr ""
 
-#empty string with id 19187
+#: system/settings/settings.xml
+msgctxt "#19187"
+msgid "Reset guide database"
+msgstr ""
 
 msgctxt "#19188"
-msgid "All your guide data will be cleared. Are you sure?"
+msgid "Guide is being reset. Are you sure?"
 msgstr ""
 
 #: system/settings/settings.xml
@@ -9137,7 +8771,7 @@ msgstr ""
 
 #: xbmc/pvr/addons/PVRClients.cpp
 msgctxt "#19193"
-msgid "The channel scan can't be started. Check the log for more information about this message."
+msgid "The channel scan can't be started.[CR]Check the log for more information about this message."
 msgstr ""
 
 msgctxt "#19194"
@@ -9262,7 +8896,7 @@ msgid "Guide"
 msgstr ""
 
 msgctxt "#19223"
-msgid "No PVR add-on could be enabled. Check your settings or the log for more information."
+msgid "No PVR add-on could be enabled.[CR]Check your settings or the log for more information."
 msgstr ""
 
 msgctxt "#19224"
@@ -11797,30 +11431,7 @@ msgctxt "#21330"
 msgid "Show hidden files and directories"
 msgstr ""
 
-#: xbmc/storage/AutorunMediaJob.cpp
-msgctxt "#21331"
-msgid "New media detected"
-msgstr ""
-
-#: xbmc/storage/AutorunMediaJob.cpp
-msgctxt "#21332"
-msgid "Browse videos"
-msgstr ""
-
-#: xbmc/storage/AutorunMediaJob.cpp
-msgctxt "#21333"
-msgid "Browse music"
-msgstr ""
-
-#: xbmc/storage/AutorunMediaJob.cpp
-msgctxt "#21334"
-msgid "Browse pictures"
-msgstr ""
-
-#: xbmc/storage/AutorunMediaJob.cpp
-msgctxt "#21335"
-msgid "Browse files"
-msgstr ""
+#empty strings from id 21331 to 21335
 
 #: xbmc/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#21336"
@@ -12525,11 +12136,7 @@ msgctxt "#21843"
 msgid "Orientation"
 msgstr ""
 
-msgctxt "#21844"
-msgid "XP comment"
-msgstr ""
-
-#empty strings from id 21845 to 21856
+#empty strings from id 21844 to 21856
 
 msgctxt "#21857"
 msgid "Sub-location"
@@ -12828,6 +12435,11 @@ msgstr ""
 #: system/settings/settings.xml
 msgctxt "#22022"
 msgid "Show video files in listings"
+msgstr ""
+
+#: xbmc/windows/GUIWindowSystemInfo.cpp
+msgctxt "#22023"
+msgid "DirectX vendor:"
 msgstr ""
 
 #: xbmc/windows/GUIWindowSystemInfo.cpp
@@ -13150,11 +12762,7 @@ msgctxt "#24034"
 msgid "Check for updates"
 msgstr ""
 
-#: Name of an Add-on category
-#: xbmc/addons/Addon.cpp
-msgctxt "#24035"
-msgid "Image collections"
-msgstr ""
+#empty string with id 24035
 
 msgctxt "#24036"
 msgid "Changelog"
@@ -13422,11 +13030,7 @@ msgctxt "#24087"
 msgid "All repositories"
 msgstr ""
 
-#. Description on error dialog why not possible
-#: xbmc/addons/GUIDialogAddonInfo.h
-msgctxt "#24088"
-msgid "The DSP add-on is currently in use and can't be modified."
-msgstr ""
+#empty string with id 24088
 
 msgctxt "#24089"
 msgid "Add-on restarts"
@@ -13667,29 +13271,7 @@ msgctxt "#24134"
 msgid "We were unable to load your configured language. Please check your language settings."
 msgstr ""
 
-#. Folder name in addon settings window
-#: xbmc/addons/addon.cpp
-msgctxt "#24135"
-msgid "Audio DSP"
-msgstr ""
-
-#. To open dsp submenu
-#: xbmc\video\dialogs\GUIDialogAudioSubtitleSettings.cpp
-msgctxt "#24136"
-msgid "Audio DSP..."
-msgstr ""
-
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSP.cpp
-msgctxt "#24137"
-msgid "Not allowed"
-msgstr ""
-
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSP.cpp
-msgctxt "#24138"
-msgid "DSP add-on is currently in use and can't be removed."
-msgstr ""
-
-#empty strings from id 24139 to 24991
+#empty strings from id 24135 to 24991
 
 #: xbmc/addons/CGUIViewStateAddonBrowser.cpp
 #: xbmc/filesystem/AddonsDirectory.cpp
@@ -14378,7 +13960,7 @@ msgstr ""
 
 #: xbmc\network\windows\ZeroconfWIN.cpp
 msgctxt "#34301"
-msgid "Is Apple's Bonjour service installed? Check the log for more information about this message."
+msgid "Is Apple's Bonjour service installed?[CR]Check the log for more information about this message."
 msgstr ""
 
 #: xbmc/network/NetworkServices.cpp
@@ -15717,7 +15299,7 @@ msgstr ""
 #. Description of setting "Music -> File lists -> Enable tag reading" with label #258
 #: system/settings/settings.xml
 msgctxt "#36274"
-msgid "Read the tag information from song files. For large directories this can increase read time, especially over a network."
+msgid "Read the tag information from song files. For large directories this can slow down read time, especially over a network."
 msgstr ""
 
 #. Description of setting "Music -> File lists -> Track naming template" with label #13307
@@ -16666,44 +16248,7 @@ msgctxt "#36435"
 msgid "Use DVDPlayer for decoding of video files with MMAL acceleration."
 msgstr ""
 
-#. Button on settings "System -> Audio output" to opend DSP manager dialog
-#: system/settings/settings.xml
-msgctxt "#36436"
-msgid "Audio DSP manager..."
-msgstr ""
-
-#. Description of setting "System -> Audio output -> Audio DSP manager..." with label 36436
-#: system/settings/settings.xml
-msgctxt "#36437"
-msgid "Allows to configure available modes for different stages in audio processing and to arrange the steps within the processing chain of each selected mode."
-msgstr ""
-
-#. Description of setting "System -> Audio output -> Enable Audio DSP processing" with label 36441
-#: system/settings/settings.xml
-msgctxt "#36438"
-msgid "Enables digital signal processing (DSP) of audio channels specified by the speaker configuration."
-msgstr ""
-
-#. Description of setting "System -> Audio output -> Reset the Audio DSP database..." with label 311
-#: system/settings/settings.xml
-msgctxt "#36439"
-msgid "All data (add-on settings and audio DSP manager settings) in the audio DSP database is being erased."
-msgstr ""
-
-#. Used in confirm on dialog to erase database
-#: xbmc/cores/AudioEngine/DSPAddons/ActiveAEDSP.cpp
-msgctxt "#36440"
-msgid "Erasing all DSP add-on and audio DSP manager settings in the audio DSP database."
-msgstr ""
-
-#. Settings boolean value name
-#: system/settings/settings.xml
-msgctxt "#36441"
-msgid "Enable audio DSP processing"
-msgstr ""
-
-#empty strings from id 36442 to 36499
-
+#empty strings from id 36436 to 36499
 #end reservation
 
 #. label of a setting for the stereoscopic 3D mode of the GUI that is/should be applied
@@ -16776,13 +16321,7 @@ msgctxt "#36510"
 msgid "Anaglyph yellow / blue"
 msgstr ""
 
-#. name of a stereoscopic mode
-#: system/settings/settings.xml
-msgctxt "#36511"
-msgid "Checkerboard"
-msgstr ""
-
-#empty strings from id 36512 to 36519
+#empty strings from id 36511 to 36519
 #end of reserved strings for 3d modes
 
 #. Name of a setting, asking the user for the default playback mode (2D, 3D, ask) of stereoscopic videos
