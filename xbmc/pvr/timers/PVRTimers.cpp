@@ -26,7 +26,6 @@
 #include "utils/log.h"
 #include "utils/URIUtils.h"
 #include "utils/StringUtils.h"
-#include "utils/Variant.h"
 
 #include "PVRTimers.h"
 #include "pvr/PVRManager.h"
@@ -175,7 +174,7 @@ bool CPVRTimers::UpdateEntries(const CPVRTimers &timers)
 
   /* to collect timer with changed starting time */
   VecTimerInfoTag timersToMove;
-
+  
   /* check for deleted timers */
   for (MapTags::iterator it = m_tags.begin(); it != m_tags.end();)
   {
@@ -208,7 +207,7 @@ bool CPVRTimers::UpdateEntries(const CPVRTimers &timers)
 
         /* remember timer */
         timersToMove.push_back(timer);
-
+        
         /* remove timer for now, reinsert later */
         it2 = it->second->erase(it2);
 
@@ -409,16 +408,17 @@ bool CPVRTimers::GetRootDirectory(const CPVRTimersPath &path, CFileItemList &ite
   bool bGrouped = path.IsGrouped();
 
   CSingleLock lock(m_critSection);
-  for (const auto &tagsEntry : m_tags)
+  for (MapTags::const_iterator it = m_tags.begin(); it != m_tags.end(); ++it)
   {
-    for (const auto &timer : *tagsEntry.second)
+    for (VecTimerInfoTag::const_iterator timerIt = it->second->begin(); timerIt != it->second->end(); ++timerIt)
     {
-      if ((bRadio == timer->m_bIsRadio) &&
-          (!bGrouped || (timer->m_iParentClientIndex == PVR_TIMER_NO_PARENT)))
+      CPVRTimerInfoTagPtr current = *timerIt;
+      if ((bRadio == current->m_bIsRadio) &&
+          (!bGrouped || (current->m_iParentClientIndex == 0)))
       {
-        item.reset(new CFileItem(timer));
+        item.reset(new CFileItem(current));
         std::string strItemPath(
-          CPVRTimersPath(path.GetPath(), timer->m_iClientId, timer->m_iClientIndex).GetPath());
+          CPVRTimersPath(path.GetPath(), current->m_iClientId, current->m_iClientIndex).GetPath());
         item->SetPath(strItemPath);
         items.Add(item);
       }
@@ -436,16 +436,18 @@ bool CPVRTimers::GetSubDirectory(const CPVRTimersPath &path, CFileItemList &item
   CFileItemPtr item;
 
   CSingleLock lock(m_critSection);
-  for (const auto &tagsEntry : m_tags)
+  for (MapTags::const_iterator it = m_tags.begin(); it != m_tags.end(); ++it)
   {
-    for (const auto &timer : *tagsEntry.second)
+    for (VecTimerInfoTag::const_iterator timerIt = it->second->begin(); timerIt != it->second->end(); ++timerIt)
     {
-      if ((timer->m_bIsRadio == bRadio) &&
-          (timer->m_iParentClientIndex != PVR_TIMER_NO_PARENT) &&
-          (timer->m_iClientId == iClientId) &&
-          (timer->m_iParentClientIndex == iParentId))
+      CPVRTimerInfoTagPtr current = *timerIt;
+
+      if ((current->m_bIsRadio == bRadio) &&
+          (current->m_iParentClientIndex > 0) &&
+          (current->m_iClientId == iClientId) &&
+          (current->m_iParentClientIndex == iParentId))
       {
-        item.reset(new CFileItem(timer));
+        item.reset(new CFileItem(current));
         items.Add(item);
       }
     }
@@ -563,13 +565,13 @@ bool CPVRTimers::AddTimer(const CPVRTimerInfoTagPtr &item)
   if (!item->m_channel && item->GetTimerType() && !item->GetTimerType()->IsRepeatingEpgBased())
   {
     CLog::Log(LOGERROR, "PVRTimers - %s - no channel given", __FUNCTION__);
-    CGUIDialogOK::ShowAndGetInput(CVariant{19033}, CVariant{19109}); // Couldn't save timer
+    CGUIDialogOK::ShowAndGetInput(19033, 19109); // Couldn't save timer
     return false;
   }
 
   if (!g_PVRClients->SupportsTimers(item->m_iClientId))
   {
-    CGUIDialogOK::ShowAndGetInput(CVariant{19033}, CVariant{19215});
+    CGUIDialogOK::ShowAndGetInput(19033, 19215);
     return false;
   }
 

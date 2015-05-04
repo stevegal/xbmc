@@ -18,8 +18,11 @@
  *
  */
 
-#include "addons/include/xbmc_pvr_types.h"
 #include "guilib/LocalizeStrings.h"
+#include "Epg.h"
+#include "EpgInfoTag.h"
+#include "EpgContainer.h"
+#include "EpgDatabase.h"
 #include "pvr/PVRManager.h"
 #include "pvr/addons/PVRClients.h"
 #include "settings/AdvancedSettings.h"
@@ -27,12 +30,9 @@
 #include "utils/log.h"
 #include "utils/StringUtils.h"
 #include "utils/Variant.h"
+#include "addons/include/xbmc_pvr_types.h"
 
-#include "Epg.h"
-#include "EpgInfoTag.h"
-#include "EpgContainer.h"
-#include "EpgDatabase.h"
-
+using namespace std;
 using namespace EPG;
 using namespace PVR;
 
@@ -52,7 +52,6 @@ CEpgInfoTag::CEpgInfoTag(void) :
     m_iEpisodeNumber(0),
     m_iEpisodePart(0),
     m_iUniqueBroadcastID(-1),
-    m_iYear(0),
     m_epg(NULL)
 {
 }
@@ -68,7 +67,6 @@ CEpgInfoTag::CEpgInfoTag(CEpg *epg, PVR::CPVRChannelPtr pvrChannel, const std::s
     m_iEpisodeNumber(0),
     m_iEpisodePart(0),
     m_iUniqueBroadcastID(-1),
-    m_iYear(0),
     m_strIconPath(strIconPath),
     m_epg(epg),
     m_pvrChannel(pvrChannel)
@@ -456,7 +454,7 @@ int CEpgInfoTag::GenreSubType(void) const
   return m_iGenreSubType;
 }
 
-const std::vector<std::string> CEpgInfoTag::Genre(void) const
+const vector<string> CEpgInfoTag::Genre(void) const
 {
   return m_genre;
 }
@@ -526,7 +524,7 @@ bool CEpgInfoTag::HasTimer(void) const
 bool CEpgInfoTag::HasTimerSchedule(void) const
 {
   CSingleLock lock(m_critSection);
-  return m_timer && (m_timer->GetTimerScheduleId() != PVR_TIMER_NO_PARENT);
+  return m_timer && (m_timer->m_iParentClientIndex > 0);
 }
 
 CPVRTimerInfoTagPtr CEpgInfoTag::Timer(void) const

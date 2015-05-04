@@ -27,16 +27,13 @@
 #include "pvr/channels/PVRChannelGroupsContainer.h"
 #include "pvr/timers/PVRTimers.h"
 #include "pvr/timers/PVRTimerInfoTag.h"
-#include "pvr/timers/PVRTimerType.h"
 #include "pvr/recordings/PVRRecordings.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/Settings.h"
 #include "utils/log.h"
 #include "utils/StringUtils.h"
-#include "utils/Variant.h"
 
 #include <assert.h>
-#include <memory>
 
 using namespace ADDON;
 using namespace PVR;
@@ -289,7 +286,7 @@ void CPVRClient::WriteClientTimerInfo(const CPVRTimerInfoTag &xbmcTimer, PVR_TIM
   addonTimer.iClientIndex              = xbmcTimer.m_iClientIndex;
   addonTimer.iParentClientIndex        = xbmcTimer.m_iParentClientIndex;
   addonTimer.state                     = xbmcTimer.m_state;
-  addonTimer.iTimerType                = xbmcTimer.GetTimerType() ? xbmcTimer.GetTimerType()->GetTypeId() : PVR_TIMER_TYPE_NONE;
+  addonTimer.iTimerType                = xbmcTimer.GetTimerType()->GetTypeId();
   addonTimer.iClientChannelUid         = xbmcTimer.m_iClientChannelUid;
   strncpy(addonTimer.strTitle, xbmcTimer.m_strTitle.c_str(), sizeof(addonTimer.strTitle) - 1);
   strncpy(addonTimer.strEpgSearchString, xbmcTimer.m_strEpgSearchString.c_str(), sizeof(addonTimer.strEpgSearchString) - 1);
@@ -298,7 +295,6 @@ void CPVRClient::WriteClientTimerInfo(const CPVRTimerInfoTag &xbmcTimer, PVR_TIM
   addonTimer.iPriority                 = xbmcTimer.m_iPriority;
   addonTimer.iLifetime                 = xbmcTimer.m_iLifetime;
   addonTimer.iPreventDuplicateEpisodes = xbmcTimer.m_iPreventDupEpisodes;
-  addonTimer.iRecordingGroup           = xbmcTimer.m_iRecordingGroup;
   addonTimer.iWeekdays                 = xbmcTimer.m_iWeekdays;
   addonTimer.startTime                 = start - g_advancedSettings.m_iPVRTimeCorrection;
   addonTimer.endTime                   = end - g_advancedSettings.m_iPVRTimeCorrection;
@@ -380,7 +376,7 @@ bool CPVRClient::GetAddonProperties(void)
 {
   std::string strBackendName, strConnectionString, strFriendlyName, strBackendVersion, strBackendHostname;
   PVR_ADDON_CAPABILITIES addonCapabilities;
-  CPVRTimerTypes timerTypes;
+  PVR_TIMER_TYPES timerTypes;
 
   /* get the capabilities */
   try
@@ -419,15 +415,15 @@ bool CPVRClient::GetAddonProperties(void)
   {
     try
     {
-      std::unique_ptr<PVR_TIMER_TYPE[]> types_array(new PVR_TIMER_TYPE[PVR_ADDON_TIMERTYPE_ARRAY_SIZE]);
+      PVR_TIMER_TYPE types_array[PVR_ADDON_TIMERTYPE_ARRAY_SIZE];
       int size = PVR_ADDON_TIMERTYPE_ARRAY_SIZE;
 
-      PVR_ERROR retval = m_pStruct->GetTimerTypes(types_array.get(), &size);
+      PVR_ERROR retval = m_pStruct->GetTimerTypes(types_array, &size);
 
       if (retval == PVR_ERROR_NOT_IMPLEMENTED)
       {
         // begin compat section
-        CLog::Log(LOGWARNING, "%s - Addon %s does not support timer types. It will work, but not benefit from the timer features introduced with PVR Addon API 2.0.0", __FUNCTION__, strFriendlyName.c_str());
+        CLog::Log(LOGWARNING, "%s - Addon %s does not support timer types. It will work, but not benefit from the timer features introduced with PVR Addon API 1.9.7.", __FUNCTION__, strFriendlyName.c_str());
 
         // Create standard timer types (mostly) matching the timer functionality available in Isengard.
         // This is for migration only and does not make changes to the addons obsolete. Addons should
@@ -487,12 +483,6 @@ bool CPVRClient::GetAddonProperties(void)
         timerTypes.reserve(size);
         for (int i = 0; i < size; ++i)
         {
-          if (types_array[i].iId == PVR_TIMER_TYPE_NONE)
-          {
-            CLog::Log(LOGERROR, "PVR - invalid timer type supplied by add-on '%s'. Please contact the developer of this add-on: %s", GetFriendlyName().c_str(), Author().c_str());
-            continue;
-          }
-
           if (strlen(types_array[i].strDescription) == 0)
           {
             int id;
@@ -511,7 +501,7 @@ bool CPVRClient::GetAddonProperties(void)
             std::string descr(g_localizeStrings.Get(id));
             strncpy(types_array[i].strDescription, descr.c_str(), descr.size());
           }
-          timerTypes.push_back(CPVRTimerTypePtr(new CPVRTimerType(types_array[i], m_iClientId)));
+          timerTypes.push_back(types_array[i]);
         }
       }
       else
@@ -1286,13 +1276,9 @@ PVR_ERROR CPVRClient::UpdateTimer(const CPVRTimerInfoTag &timer)
   return retVal;
 }
 
-PVR_ERROR CPVRClient::GetTimerTypes(CPVRTimerTypes& results) const
+const PVR_TIMER_TYPES *CPVRClient::GetTimerTypes(void) const
 {
-  if (!m_bReadyToUse)
-    return PVR_ERROR_REJECTED;
-
-  results = m_timertypes;
-  return PVR_ERROR_NO_ERROR;
+  return &m_timertypes;
 }
 
 int CPVRClient::ReadStream(void* lpBuf, int64_t uiBufSize)
@@ -1829,21 +1815,6 @@ bool CPVRClient::CanSeekStream(void) const
   return bReturn;
 }
 
-bool CPVRClient::IsTimeshifting(void) const
-{
-  bool bReturn(false);
-  if (IsPlaying())
-  {
-    try
-    {
-      if (m_pStruct->IsTimeshifting)
-        bReturn = m_pStruct->IsTimeshifting();
-    }
-    catch (std::exception &e) { LogException(e, __FUNCTION__); }
-  }
-  return bReturn;
-}
-
 time_t CPVRClient::GetPlayingTime(void) const
 {
   time_t time = 0;
@@ -1936,10 +1907,10 @@ bool CPVRClient::Autoconfigure(void)
         std::string strLogLine(StringUtils::Format(g_localizeStrings.Get(19689).c_str(), (*it).GetName().c_str(), (*it).GetIP().c_str()));
         CLog::Log(LOGDEBUG, "%s - %s", __FUNCTION__, strLogLine.c_str());
 
-        if (!CGUIDialogYesNo::ShowAndGetInput(CVariant{19688}, // Scanning for PVR services
-                                              CVariant{strLogLine},
-                                              CVariant{19690}, // Do you want to use this service?
-                                              CVariant{""}))
+        if (!CGUIDialogYesNo::ShowAndGetInput(19688, // Scanning for PVR services
+                                              strLogLine,
+                                              19690, // Do you want to use this service?
+                                              ""))
         {
           CLog::Log(LOGDEBUG, "%s - %s service found but not enabled by the user", __FUNCTION__, (*it).GetName().c_str());
           m_rejectedAvahiHosts.push_back(*it);

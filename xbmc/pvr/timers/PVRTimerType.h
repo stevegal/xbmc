@@ -64,8 +64,6 @@ namespace PVR
     static CPVRTimerTypePtr CreateFromAttributes(unsigned int iMustHaveAttr, unsigned int iMustNotHaveAttr, int iClientId);
 
     CPVRTimerType();
-    CPVRTimerType(const PVR_TIMER_TYPE &type, int iClientId);
-
     virtual ~CPVRTimerType();
 
     CPVRTimerType(const CPVRTimerType &type) = delete;
@@ -84,7 +82,7 @@ namespace PVR
      * @brief Get the numeric type id of this type.
      * @return The type id.
      */
-    unsigned int GetTypeId() const { return m_iTypeId; }
+    int GetTypeId() const { return m_iTypeId; }
 
     /*!
      * @brief Get the plain text (UI) description of this type.
@@ -96,7 +94,7 @@ namespace PVR
      * @brief Check whether this type is for repeating ore one time timers.
      * @return True if repeating, false otherwise.
      */
-    bool IsRepeating() const { return (m_iAttributes & PVR_TIMER_TYPE_IS_REPEATING) > 0; }
+    bool IsRepeating() const { return m_iAttributes & PVR_TIMER_TYPE_IS_REPEATING; }
 
     /*!
      * @brief Check whether this type is for repeating ore one time timers.
@@ -108,7 +106,7 @@ namespace PVR
      * @brief Check whether this type is for epg-based or manual timers.
      * @return True if manual, false otherwise.
      */
-    bool IsManual() const { return (m_iAttributes & PVR_TIMER_TYPE_IS_MANUAL) > 0; }
+    bool IsManual() const { return m_iAttributes & PVR_TIMER_TYPE_IS_MANUAL; }
 
     /*!
      * @brief Check whether this type is for epg-based or manual timers.
@@ -141,95 +139,83 @@ namespace PVR
     bool IsOnetimeManual() const { return IsOnetime() && IsManual(); }
 
     /*!
-     * @brief Check whether this type is readonly (must not be modified after initial creation).
+     * @brief Check whether this type is readonly (shall not be modified after initial creation).
      * @return True if readonly, false otherwise.
      */
-    bool IsReadOnly() const { return (m_iAttributes & PVR_TIMER_TYPE_IS_READONLY) > 0; }
-
-    /*!
-     * @brief Check whether this type forbids creation of new timers of this type.
-     * @return True if new instances are forbidden, false otherwise.
-     */
-    bool ForbidsNewInstances() const { return (m_iAttributes & PVR_TIMER_TYPE_FORBIDS_NEW_INSTANCES) > 0; }
+    bool IsReadOnly() const { return m_iAttributes & PVR_TIMER_TYPE_IS_READONLY; }
 
     /*!
      * @brief Check whether this type supports the "enabling/disabling" of timers of its type.
      * @return True if "enabling/disabling" feature is supported, false otherwise.
      */
-    bool SupportsEnableDisable() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_ENABLE_DISABLE) > 0; }
+    bool SupportsEnableDisable() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_ENABLE_DISABLE; }
 
     /*!
      * @brief Check whether this type supports channels.
      * @return True if channels are supported, false otherwise.
      */
-    bool SupportsChannels() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_CHANNELS) > 0; }
+    bool SupportsChannels() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_CHANNELS; }
 
     /*!
      * @brief Check whether this type supports start time and end time.
      * @return True if start time and end time values is supported, false otherwise.
      */
-    bool SupportsStartEndTime() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_START_END_TIME) > 0; }
+    bool SupportsStartEndTime() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_START_END_TIME; }
 
     /*!
      * @brief Check whether this type supports matching a search string against epg episode title.
      * @return True if title matching is supported, false otherwise.
      */
-    bool SupportsEpgTitleMatch() const { return (m_iAttributes & (PVR_TIMER_TYPE_SUPPORTS_TITLE_EPG_MATCH | PVR_TIMER_TYPE_SUPPORTS_FULLTEXT_EPG_MATCH)) > 0; }
+    bool SupportsEpgTitleMatch() const { return m_iAttributes & (PVR_TIMER_TYPE_SUPPORTS_TITLE_EPG_MATCH | PVR_TIMER_TYPE_SUPPORTS_FULLTEXT_EPG_MATCH); }
 
     /*!
      * @brief Check whether this type supports matching a search string against extended (fulltext) epg data. This
               includes title matching.
      * @return True if fulltext matching is supported, false otherwise.
      */
-    bool SupportsEpgFulltextMatch() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_FULLTEXT_EPG_MATCH) > 0; }
+    bool SupportsEpgFulltextMatch() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_FULLTEXT_EPG_MATCH; }
 
     /*!
      * @brief Check whether this type supports a first day the timer is active.
      * @return True if first day is supported, false otherwise.
      */
-    bool SupportsFirstDay() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_FIRST_DAY) > 0; }
+    bool SupportsFirstDay() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_FIRST_DAY; }
 
     /*!
      * @brief Check whether this type supports weekdays for timer schedules.
      * @return True if weekdays are supported, false otherwise.
      */
-    bool SupportsWeekdays() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_WEEKDAYS) > 0; }
+    bool SupportsWeekdays() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_WEEKDAYS; }
 
     /*!
      * @brief Check whether this type supports the "record only new episodes" feature.
      * @return True if the "record only new episodes" feature is supported, false otherwise.
      */
-    bool SupportsRecordOnlyNewEpisodes() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_RECORD_ONLY_NEW_EPISODES) > 0; }
+    bool SupportsRecordOnlyNewEpisodes() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_RECORD_ONLY_NEW_EPISODES; }
 
     /*!
      * @brief Check whether this type supports pre and post record time.
      * @return True if pre and post record time is supported, false otherwise.
      */
-    bool SupportsStartEndMargin() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_START_END_MARGIN) > 0; }
+    bool SupportsStartEndMargin() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_START_END_MARGIN; }
 
     /*!
      * @brief Check whether this type supports recording priorities.
      * @return True if recording priority is supported, false otherwise.
      */
-    bool SupportsPriority() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_PRIORITY) > 0; }
+    bool SupportsPriority() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_PRIORITY; }
 
     /*!
      * @brief Check whether this type supports lifetime for recordings.
      * @return True if recording lifetime is supported, false otherwise.
      */
-    bool SupportsLifetime() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_LIFETIME) > 0; }
+    bool SupportsLifetime() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_LIFETIME; }
 
     /*!
      * @brief Check whether this type supports user specified recording folders.
      * @return True if recording folders are supported, false otherwise.
      */
-    bool SupportsRecordingFolders() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_RECORDING_FOLDERS) > 0; }
-
-    /*!
-     * @brief Check whether this type supports recording groups.
-     * @return True if recording groups are supported, false otherwise.
-     */
-    bool SupportsRecordingGroup() const { return (m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_RECORDING_GROUP) > 0; }
+    bool SupportsRecordingFolders() const { return m_iAttributes & PVR_TIMER_TYPE_SUPPORTS_RECORDING_FOLDERS; }
 
     /*!
      * @brief Obtain a list with all possible values for the priority attribute.
@@ -267,25 +253,13 @@ namespace PVR
      */
     int GetPreventDuplicateEpisodesDefault() const { return m_iPreventDupEpisodesDefault; }
 
-    /*!
-     * @brief Obtain a list with all possible values for the recording group attribute.
-     * @param list out, the list with the values or an empty list, if recording group is not supported by this type.
-     */
-    void GetRecordingGroupValues(std::vector< std::pair<std::string, int> > &list) const;
-
-    /*!
-     * @brief Obtain the default value for the Recording Group attribute.
-     * @return the default value.
-     */
-    int GetRecordingGroupDefault() const { return m_iRecordingGroupDefault; }
-
-
   private:
+    CPVRTimerType(const PVR_TIMER_TYPE &type, int iClientId);
+
     void InitAttributeValues(const PVR_TIMER_TYPE &type);
     void InitPriorityValues(const PVR_TIMER_TYPE &type);
     void InitLifetimeValues(const PVR_TIMER_TYPE &type);
     void InitPreventDuplicateEpisodesValues(const PVR_TIMER_TYPE &type);
-    void InitRecordingGroupValues(const PVR_TIMER_TYPE &type);
 
     int           m_iClientId;
     unsigned int  m_iTypeId;
@@ -297,7 +271,5 @@ namespace PVR
     int           m_iLifetimeDefault;
     std::vector< std::pair<std::string, int> > m_preventDupEpisodesValues;
     unsigned int  m_iPreventDupEpisodesDefault;
-    std::vector< std::pair<std::string, int> > m_recordingGroupValues;
-    unsigned int  m_iRecordingGroupDefault;
   };
 }
