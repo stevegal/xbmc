@@ -48,7 +48,7 @@ namespace PVR
   protected:
     // implementation of ISettingCallback
     virtual void OnSettingChanged(const CSetting *setting);
-    virtual void OnSettingAction(const CSetting *setting);
+    virtual void OnSettingAction (const CSetting *setting);
 
     // specialization of CGUIDialogSettingsBase
     virtual bool AllowResettingSettings() const { return false; }
@@ -61,11 +61,8 @@ namespace PVR
   private:
     void InitializeTypesList();
     void InitializeChannelsList();
+    static int InitializeDay(const CDateTime &datetime);
     void SetButtonLabels();
-
-    static int  GetDateAsIndex(const CDateTime &datetime);
-    static void SetDateFromIndex(CDateTime &datetime, int date);
-    static void SetTimeFromSystemTime(CDateTime &datetime, const SYSTEMTIME &time);
 
     static void TypesFiller(
       const CSetting *setting, std::vector< std::pair<std::string, int> > &list, int &current, void *data);
@@ -80,8 +77,6 @@ namespace PVR
     static void PrioritiesFiller(
       const CSetting *setting, std::vector< std::pair<std::string, int> > &list, int &current, void *data);
     static void LifetimesFiller(
-      const CSetting *setting, std::vector< std::pair<std::string, int> > &list, int &current, void *data);
-    static void RecordingGroupFiller(
       const CSetting *setting, std::vector< std::pair<std::string, int> > &list, int &current, void *data);
 
     void AddCondition(
@@ -143,16 +138,17 @@ namespace PVR
     std::string         m_strEpgSearchString;
     bool                m_bFullTextEpgSearch;
     ChannelDescriptor   m_channel;
-    CDateTime           m_startLocalTime;
-    CDateTime           m_endLocalTime;
+    int                 m_iStartDay; // days since "today" (0 == "today", 1 == "tomorrow", ...)
+    int                 m_iEndDay;   // days since "today" (0 == "today", 1 == "tomorrow", ...)
+    SYSTEMTIME          m_timerStartTime;
+    SYSTEMTIME          m_timerEndTime;
     unsigned int        m_iWeekdays;
-    CDateTime           m_firstDayLocalTime;
+    int                 m_iFirstDay;
     unsigned int        m_iPreventDupEpisodes;
     unsigned int        m_iMarginStart;
     unsigned int        m_iMarginEnd;
     int                 m_iPriority;
     int                 m_iLifetime;
     std::string         m_strDirectory;
-    unsigned int        m_iRecordingGroup;
   };
 } // namespace PVR
