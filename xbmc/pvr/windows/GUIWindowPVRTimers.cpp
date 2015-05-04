@@ -34,7 +34,6 @@
 #include "settings/Settings.h"
 #include "threads/SingleLock.h"
 #include "utils/StringUtils.h"
-#include "utils/Variant.h"
 
 using namespace PVR;
 
@@ -85,8 +84,7 @@ void CGUIWindowPVRTimers::GetContextButtons(int itemNumber, CContextButtons &but
 
     buttons.Add(CONTEXT_BUTTON_FIND, 19003);            /* Find similar program */
 
-    if (pItem->GetPVRTimerInfoTag()->HasTimerType() &&
-        !pItem->GetPVRTimerInfoTag()->GetTimerType()->IsReadOnly())
+    if (!pItem->GetPVRTimerInfoTag()->GetTimerType()->IsReadOnly())
     {
       if (pItem->GetPVRTimerInfoTag()->GetTimerType()->SupportsEnableDisable())
       {
@@ -322,7 +320,7 @@ bool CGUIWindowPVRTimers::OnContextButtonRename(CFileItem *item, CONTEXT_BUTTON 
     CPVRTimerInfoTagPtr timer = item->GetPVRTimerInfoTag();
 
     std::string strNewName(timer->m_strTitle);
-    if (CGUIKeyboardFactory::ShowAndGetInput(strNewName, CVariant{g_localizeStrings.Get(19042)}, false))
+    if (CGUIKeyboardFactory::ShowAndGetInput(strNewName, g_localizeStrings.Get(19042), false))
       g_PVRTimers->RenameTimer(*item, strNewName);
   }
 
@@ -346,7 +344,7 @@ bool CGUIWindowPVRTimers::ActionDeleteTimer(CFileItem *item)
 {
   /* check if the timer tag is valid */
   CPVRTimerInfoTagPtr timerTag = item->GetPVRTimerInfoTag();
-  if (!timerTag || timerTag->m_state == PVR_TIMER_STATE_NEW)
+  if (!timerTag || timerTag->m_iClientIndex < 0)
     return false;
 
   bool bDeleteSchedule(false);
@@ -429,7 +427,7 @@ bool CGUIWindowPVRTimers::ShowTimerSettings(CFileItem *item)
   pDlgInfo->SetTimer(item);
 
   /* Open dialog window */
-  pDlgInfo->Open();
+  pDlgInfo->DoModal();
 
   /* Get modify flag from window and return it to caller */
   return pDlgInfo->IsConfirmed();
